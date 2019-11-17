@@ -8,42 +8,53 @@
 
 import UIKit
 
-final class EventListViewController: UIViewController {
+final class EventListViewController: BaseViewController {
   @IBOutlet weak var eventTableView: UITableView!
   @IBOutlet weak var settingButton: UIButton!
+
+  var dataSource: CalendarDataSource?
+  var events: [Event] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
     eventTableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "EventCell")
+    reload()
   }
 
   @IBAction func didTapSetting(_ sender: Any) {
-    let vc = SettingViewController.controllerFromStoryboard("Setting")
-    present(vc, animated: true)
+    navigator?.show(.setting, transition: .present)
   }
 
   @IBAction func didTapWrite(_ sender: Any) {
-    let vc = EventEditViewController.controllerFromStoryboard("EventEdit")
-    present(vc, animated: true)
+    navigator?.show(.eventEdit(mode: .new, completion: reload), transition: .present)
+  }
+
+  func reload() {
+    self.events = dataSource?.events() ?? []
+    eventTableView.reloadData()
   }
 }
 
 extension EventListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return events.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
-    cell.event = Event(title: "어머니 생신", date: Date())
+    cell.event = events[indexPath.row]
     return cell
   }
 }
 
 extension EventListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let vc = EventEditViewController.controllerFromStoryboard("EventEdit")
-    vc.mode = .edit(Event(title: "어머니 생신", date: Date()))
-    present(vc, animated: true)
+    navigator?.show(
+      .eventEdit(
+        mode: .edit(events[indexPath.row]),
+        completion: reload
+      ),
+      transition: .present
+    )
   }
 }

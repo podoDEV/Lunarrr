@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import Scope
 
 class Event: Equatable {
+  var id: String?
   var title: String?
   var date: Date?
 
@@ -25,6 +27,22 @@ class Event: Equatable {
   init(title: String, date: Date) {
     self.title = title
     self.date = date
+  }
+
+  init(event: RealmEvent) {
+    self.id = event.id
+    self.title = event.title
+    self.date = event.date
+  }
+
+  func convertForRealm() -> RealmEvent {
+    return RealmEvent().also {
+      if let id = self.id {
+        $0.id = id
+      }
+      $0.title = self.title ?? ""
+      $0.date = self.date ?? Date()
+    }
   }
 
   static func == (lhs: Event, rhs: Event) -> Bool {

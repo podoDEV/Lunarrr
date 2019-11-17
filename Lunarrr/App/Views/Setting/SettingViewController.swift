@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SettingViewController: UIViewController {
+final class SettingViewController: BaseViewController {
   @IBOutlet weak var tableView: UITableView!
 
   override func viewDidLoad() {

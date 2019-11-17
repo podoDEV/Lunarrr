@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window = self.dependency.window
     self.dependency.configureSDKs()
     self.dependency.configureAppearance()
+    self.dependency.coordinator.start()
     return true
   }
 }

@@ -29,6 +29,7 @@ def app
   pod 'Firebase/Core'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'RealmSwift'
 
   # Misc.
   pod 'Scope'

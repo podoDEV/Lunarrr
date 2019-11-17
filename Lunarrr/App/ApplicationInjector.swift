@@ -13,17 +13,23 @@ import Umbrella
 
 struct AppDependency {
   let window: UIWindow
+  let coordinator: ApplicationCoordinator
   let configureSDKs: () -> Void
   let configureAppearance: () -> Void
 }
 
 struct ApplicationInjector {
   static func resolve() -> AppDependency {
-    let window = UIWindow()
-    window.rootViewController = EventListViewController.controllerFromStoryboard("EventList")
+    let window = UIWindow(frame: UIScreen.main.bounds)
+    let rootController = UINavigationController()
+    window.rootViewController = rootController
+    window.backgroundColor = .white
     window.makeKeyAndVisible()
+
+    let coordinator = ApplicationCoordinator(window: window)
     return AppDependency(
       window: window,
+      coordinator: coordinator,
       configureSDKs: configureSDKs,
       configureAppearance: configureAppearance
     )

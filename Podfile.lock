@@ -76,6 +76,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Realm (4.1.0):
+    - Realm/Headers (= 4.1.0)
+  - Realm/Headers (4.1.0)
+  - RealmSwift (4.1.0):
+    - Realm (= 4.1.0)
   - Result (4.1.0)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
@@ -113,6 +118,7 @@ DEPENDENCIES:
   - KeychainAccess
   - Moya
   - Moya/RxSwift
+  - RealmSwift
   - RxCocoa
   - RxCodable
   - RxDataSources
@@ -145,6 +151,8 @@ SPEC REPOS:
     - KeychainAccess
     - Moya
     - nanopb
+    - Realm
+    - RealmSwift
     - Result
     - RxCocoa
     - RxCodable
@@ -176,6 +184,8 @@ SPEC CHECKSUMS:
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Realm: 5d1453468eca02c901c50b8a356f4a98a15b57aa
+  RealmSwift: 1d238caa5c64a590c669beef1a7e858a6cf55a1c
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxCodable: a5e218ab1cb9bd1a360d8803d9dd43868d708d23
@@ -189,6 +199,6 @@ SPEC CHECKSUMS:
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   Umbrella: d5b508a0efea3c50f4764ad96035d08eafee26bc
 
-PODFILE CHECKSUM: b091e161ab67c971a1effa6ceb4f489a2758687b
+PODFILE CHECKSUM: a7e47f4305fcbcf0f5681461beffb0c2cdedd695
 
 COCOAPODS: 1.8.4

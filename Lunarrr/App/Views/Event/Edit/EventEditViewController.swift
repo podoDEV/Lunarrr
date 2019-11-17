@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventEditViewController: UIViewController {
+final class EventEditViewController: BaseViewController {
   @IBOutlet weak var containerView: UIView!
   @IBOutlet weak var modeLabel: UILabel!
   @IBOutlet weak var titleField: UITextField!
@@ -19,15 +19,20 @@ final class EventEditViewController: UIViewController {
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var deleteButton: UIButton!
 
+  var dataSource: CalendarDataSource?
+
   var mode: EventEditMode = .new
   var current = Date() {
     didSet {
-      let calendar = Calendar(identifier: .chinese)
+      let calendar = Calendar(identifier: .gregorian)
       yearField.text = "\(calendar.component(.year, from: current))"
       monthField.text = "\(calendar.component(.month, from: current))"
       dayField.text = "\(calendar.component(.day, from: current))"
+      datePicker.date = current
     }
   }
+
+  var didEditFinish: (() -> Void)?
 
   private lazy var toolbar: UIToolbar = {
     let toolbar = UIToolbar()
@@ -40,14 +45,14 @@ final class EventEditViewController: UIViewController {
       title: "Done",
       style: .plain,
       target: self,
-      action: #selector(EventEditViewController.endUpdateDate)
+      action: #selector(endUpdateDate)
     )
     let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     let cancelButton = UIBarButtonItem(
       title: "Cancel",
       style: .plain,
       target: self,
-      action: #selector(EventEditViewController.cancelUpdateDate)
+      action: #selector(cancelUpdateDate)
     )
     toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
     toolbar.isUserInteractionEnabled = true
@@ -60,7 +65,7 @@ final class EventEditViewController: UIViewController {
     datePicker.maximumDate = self.current
     datePicker.backgroundColor = .white
     datePicker.timeZone = .current
-    datePicker.calendar = Calendar(identifier: .chinese)
+    datePicker.calendar = Calendar(identifier: .gregorian)
     return datePicker
   }()
 
@@ -70,7 +75,7 @@ final class EventEditViewController: UIViewController {
   }
 
   func setupSubviews() {
-    containerView.backgroundColor = .white
+    containerView.backgroundColor = UIColor(named: "background")
     yearField.inputAccessoryView = toolbar
     yearField.inputView = datePicker
     monthField.inputAccessoryView = toolbar
@@ -87,16 +92,33 @@ final class EventEditViewController: UIViewController {
   }
 
   @IBAction func didTapClose(_ sender: Any) {
-    dismiss(animated: true)
+    navigator?.pop(isModal: true)
   }
 
   @IBAction func didTapCreate(_ sender: Any) {
+    guard let eventTitle = titleField.text else { return }
+    let event = Event(title: eventTitle, date: current)
+    dataSource?.newEvent(event: event)
+    didEditFinish?()
+    navigator?.pop(isModal: true)
   }
 
   @IBAction func didTapEdit(_ sender: Any) {
+    guard let eventTitle = titleField.text else { return }
+    guard case let .edit(event) = mode else { return }
+    event.title = eventTitle
+    event.date = current
+    dataSource?.updateEvent(event: event)
+    didEditFinish?()
+    navigator?.pop(isModal: true)
   }
 
   @IBAction func didTapDelete(_ sender: Any) {
+    guard case let .edit(event) = mode else { return }
+    guard let id = event.id else { return }
+    dataSource?.deleteEvent(id: id)
+    didEditFinish?()
+    navigator?.pop(isModal: true)
   }
 
   @objc func endUpdateDate() {
