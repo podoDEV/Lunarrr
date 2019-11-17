@@ -6,9 +6,6 @@ use_frameworks!
 
 def app
 
-  # Architecture
-  pod 'ReactorKit'
-
   # Networking
   pod 'Alamofire'
   pod 'Moya'
@@ -23,27 +20,15 @@ def app
   pod 'RxKeyboard'
   pod 'Differentiator'
 
-  # UI
-  pod 'SnapKit'
-#  pod 'SideMenu'
-  pod 'NVActivityIndicatorView'
-
   # Logging
   pod 'SwiftyBeaver'
   pod 'Umbrella'
   pod 'Umbrella/Firebase'
 
-  # Transition
-  pod 'Hero'
-
   # SDK
   pod 'Firebase/Core'
   pod 'Fabric'
   pod 'Crashlytics'
-
-  # OAuth
-#  pod 'FBSDKLoginKit'
-#  pod 'GoogleSignIn'
 
   # Misc.
   pod 'Scope'

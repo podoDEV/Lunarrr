@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     self.dependency = self.dependency ?? ApplicationInjector.resolve()
+    self.window = self.dependency.window
     self.dependency.configureSDKs()
     self.dependency.configureAppearance()
     return true

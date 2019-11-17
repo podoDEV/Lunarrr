@@ -12,13 +12,18 @@ import SwiftyBeaver
 import Umbrella
 
 struct AppDependency {
+  let window: UIWindow
   let configureSDKs: () -> Void
   let configureAppearance: () -> Void
 }
 
 struct ApplicationInjector {
   static func resolve() -> AppDependency {
+    let window = UIWindow()
+    window.rootViewController = EventListViewController.controllerFromStoryboard("EventList")
+    window.makeKeyAndVisible()
     return AppDependency(
+      window: window,
       configureSDKs: configureSDKs,
       configureAppearance: configureAppearance
     )
@@ -30,13 +35,13 @@ struct ApplicationInjector {
   }
 
   static func configureLogger() {
-//    let console = ConsoleDestination()
-//    log.addDestination(console)
+    let console = ConsoleDestination()
+    log.addDestination(console)
   }
 
   static func configureAnalytics() {
-//    FirebaseApp.configure()
-//    analytics.register(provider: FirebaseProvider())
+    FirebaseApp.configure()
+    analytics.register(provider: FirebaseProvider())
   }
 
   static func configureAppearance() {

@@ -62,7 +62,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.3.1):
     - GoogleUtilities/Logger
-  - Hero (1.4.0)
   - KeychainAccess (3.2.0)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
@@ -77,11 +76,6 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - NVActivityIndicatorView (4.8.0):
-    - NVActivityIndicatorView/Presenter (= 4.8.0)
-  - NVActivityIndicatorView/Presenter (4.8.0)
-  - ReactorKit (1.2.1):
-    - RxSwift (>= 4.0.0)
   - Result (4.1.0)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
@@ -101,7 +95,6 @@ PODS:
     - RxSwift (>= 4.3.1)
   - RxSwift (4.5.0)
   - Scope (1.1.0)
-  - SnapKit (5.0.1)
   - SwiftLint (0.35.0)
   - SwiftyBeaver (1.8.2)
   - Swinject (2.7.1)
@@ -117,12 +110,9 @@ DEPENDENCIES:
   - Differentiator
   - Fabric
   - Firebase/Core
-  - Hero
   - KeychainAccess
   - Moya
   - Moya/RxSwift
-  - NVActivityIndicatorView
-  - ReactorKit
   - RxCocoa
   - RxCodable
   - RxDataSources
@@ -130,7 +120,6 @@ DEPENDENCIES:
   - RxKeyboard
   - RxSwift
   - Scope
-  - SnapKit
   - SwiftLint
   - SwiftyBeaver
   - Swinject
@@ -153,12 +142,9 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
-    - Hero
     - KeychainAccess
     - Moya
     - nanopb
-    - NVActivityIndicatorView
-    - ReactorKit
     - Result
     - RxCocoa
     - RxCodable
@@ -167,7 +153,6 @@ SPEC REPOS:
     - RxKeyboard
     - RxSwift
     - Scope
-    - SnapKit
     - SwiftLint
     - SwiftyBeaver
     - Swinject
@@ -188,12 +173,9 @@ SPEC CHECKSUMS:
   GoogleDataTransport: f6fe28f43e3a300736854260961ad485b473edc5
   GoogleDataTransportCCTSupport: 862418a8cdda520c4dd4af83a756d04efe4a6990
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
-  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
-  ReactorKit: 8be57f0527ad1ac2963cd5c338274a46a01e57a3
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxCodable: a5e218ab1cb9bd1a360d8803d9dd43868d708d23
@@ -202,12 +184,11 @@ SPEC CHECKSUMS:
   RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   Scope: ef03c904948a66ba3c487d0d7efa486d764d3da6
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   SwiftyBeaver: aaf2ebd7dac2e952991f46a82ed24ad642867ae2
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   Umbrella: d5b508a0efea3c50f4764ad96035d08eafee26bc
 
-PODFILE CHECKSUM: 57705190e15b47b93410196b212f93f6ff577852
+PODFILE CHECKSUM: b091e161ab67c971a1effa6ceb4f489a2758687b
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4
