@@ -9,16 +9,6 @@ def app
   # Networking
   pod 'Alamofire'
   pod 'Moya'
-  pod 'Moya/RxSwift'
-
-  # Rx
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'RxCodable'
-  pod 'RxDataSources'
-  pod 'RxGesture'
-  pod 'RxKeyboard'
-  pod 'Differentiator'
 
   # Logging
   pod 'SwiftyBeaver'
@@ -34,7 +24,6 @@ def app
   # Misc.
   pod 'Scope'
   pod 'SwiftLint'
-  pod 'Swinject'
   pod 'KeychainAccess'
 end
 
