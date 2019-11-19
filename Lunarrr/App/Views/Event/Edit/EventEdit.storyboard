@@ -72,9 +72,10 @@
                                                             <constraint firstAttribute="height" constant="20" id="cX4-Gw-Ej3"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                         <connections>
                                                             <action selector="textFieldDidChange:" destination="8FR-22-HPd" eventType="editingChanged" id="QPH-Kl-kwl"/>
+                                                            <outlet property="delegate" destination="8FR-22-HPd" id="GEZ-At-gSG"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>

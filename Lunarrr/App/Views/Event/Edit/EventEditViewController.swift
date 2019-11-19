@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventEditViewController: BaseViewController {
+final class EventEditViewController: BaseViewController, UITextFieldDelegate {
   @IBOutlet weak var containerView: UIView!
   @IBOutlet weak var modeLabel: UILabel!
   @IBOutlet weak var titleField: UITextField!
@@ -131,6 +131,11 @@ final class EventEditViewController: BaseViewController {
     validate(text: titleField.text, date: current)
   }
 
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+
   @objc func endUpdateDate() {
     current = datePicker.date
     validate(text: titleField.text, date: current)
@@ -166,7 +171,7 @@ final class EventEditViewController: BaseViewController {
       button.setTitleColor(color, for: .normal)
       button.layer.borderColor = color?.cgColor
     } else {
-      let color = UIColor(named: "border")
+      let color = UIColor(named: "title_disable")
       button.isEnabled = false
       button.setTitleColor(color, for: .normal)
       button.layer.borderColor = color?.cgColor
