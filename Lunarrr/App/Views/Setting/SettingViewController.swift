@@ -14,6 +14,7 @@ final class SettingViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UINib(nibName: "SyncCell", bundle: Bundle.main), forCellReuseIdentifier: "SyncCell")
+    analytics.log(.setting_view)
   }
 }
 
@@ -24,7 +25,6 @@ extension SettingViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "SyncCell") as! SyncCell
-//    cell.event = Event(title: "어머니 생신", date: Date())
     return cell
   }
 }

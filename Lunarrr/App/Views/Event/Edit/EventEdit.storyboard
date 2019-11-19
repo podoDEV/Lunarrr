@@ -41,9 +41,9 @@
                                             <constraint firstAttribute="width" constant="42" id="LmR-s8-m1h"/>
                                             <constraint firstAttribute="height" constant="42" id="Mum-FO-PxH"/>
                                         </constraints>
-                                        <state key="normal" image="arrowshape.turn.up.left" catalog="system"/>
+                                        <state key="normal" image="btn_close"/>
                                         <connections>
-                                            <action selector="didTapClose:" destination="8FR-22-HPd" eventType="touchUpInside" id="7La-df-UWj"/>
+                                            <action selector="closingWasTapped:" destination="8FR-22-HPd" eventType="touchUpInside" id="F4w-Gr-rMQ"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Ixl-Ln-Om2">
@@ -73,6 +73,9 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="S-CoreDream-5Medium" family="S-Core Dream" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="textFieldDidChange:" destination="8FR-22-HPd" eventType="editingChanged" id="QPH-Kl-kwl"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -247,7 +250,7 @@
                                                     <constraint firstAttribute="height" constant="16" id="qwD-gP-OVj"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ray-rd-Aub">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ray-rd-Aub">
                                                 <rect key="frame" x="0.0" y="212" width="356" height="42"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -269,10 +272,10 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTapCreate:" destination="8FR-22-HPd" eventType="touchUpInside" id="d8B-nM-48o"/>
+                                                    <action selector="createWasTapped:" destination="8FR-22-HPd" eventType="touchUpInside" id="vxE-id-EB7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2WT-kJ-BxE">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2WT-kJ-BxE">
                                                 <rect key="frame" x="0.0" y="268" width="356" height="42"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
@@ -294,7 +297,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTapEdit:" destination="8FR-22-HPd" eventType="touchUpInside" id="n5P-Jl-x10"/>
+                                                    <action selector="editWasTapped:" destination="8FR-22-HPd" eventType="touchUpInside" id="wSA-Lo-vSL"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngx-e4-6pk">
@@ -319,7 +322,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTapDelete:" destination="8FR-22-HPd" eventType="touchUpInside" id="qyy-yg-BoQ"/>
+                                                    <action selector="deleteWasTapped:" destination="8FR-22-HPd" eventType="touchUpInside" id="wWI-br-BA7"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -382,7 +385,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
+        <image name="btn_close" width="24" height="24"/>
         <namedColor name="background">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

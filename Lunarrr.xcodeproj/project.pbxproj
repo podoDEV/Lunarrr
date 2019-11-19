@@ -11,6 +11,7 @@
 		2D0E58AA23518739008F82BE /* BMEULJIRO.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E58A923518739008F82BE /* BMEULJIRO.otf */; };
 		2D0E58B023518749008F82BE /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E58AD23518749008F82BE /* EventListViewController.swift */; };
 		2D0E58B123518749008F82BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E58AE23518749008F82BE /* AppDelegate.swift */; };
+		2D30E64F23842DD2002BB6C3 /* Calendar+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30E64E23842DD2002BB6C3 /* Calendar+Additions.swift */; };
 		2D80869D2380157300F505F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D80869C2380157300F505F8 /* Colors.xcassets */; };
 		2D80869F23801ABA00F505F8 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D80869E23801ABA00F505F8 /* UIView+Additions.swift */; };
 		2D8086A1238028B300F505F8 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8086A0238028B300F505F8 /* UIButton+Additions.swift */; };
@@ -58,6 +59,7 @@
 		2D0E58AB23518748008F82BE /* Lunarrr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lunarrr-Bridging-Header.h"; sourceTree = "<group>"; };
 		2D0E58AD23518749008F82BE /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		2D0E58AE23518749008F82BE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2D30E64E23842DD2002BB6C3 /* Calendar+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Additions.swift"; sourceTree = "<group>"; };
 		2D80869C2380157300F505F8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2D80869E23801ABA00F505F8 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		2D8086A0238028B300F505F8 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
@@ -327,11 +329,12 @@
 		2DD4A021236D26FB002BF6B5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2DD4A022236D2720002BF6B5 /* UIViewContoller+Additions.swift */,
-				2D80869E23801ABA00F505F8 /* UIView+Additions.swift */,
-				2D8086A0238028B300F505F8 /* UIButton+Additions.swift */,
+				2D30E64E23842DD2002BB6C3 /* Calendar+Additions.swift */,
 				2D8086A223802B6700F505F8 /* Date+Formatter.swift */,
 				2DA3796923812C1700FDDF25 /* Int+Additions.swift */,
+				2D8086A0238028B300F505F8 /* UIButton+Additions.swift */,
+				2D80869E23801ABA00F505F8 /* UIView+Additions.swift */,
+				2DD4A022236D2720002BF6B5 /* UIViewContoller+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				2D0E58B023518749008F82BE /* EventListViewController.swift in Sources */,
 				2D849706238194D8001C0EEC /* CalendarProvider.swift in Sources */,
 				2DA3796C23813C2E00FDDF25 /* EventEditMode.swift in Sources */,
+				2D30E64F23842DD2002BB6C3 /* Calendar+Additions.swift in Sources */,
 				2DA3796F23814BF800FDDF25 /* CalendarService.swift in Sources */,
 				2DD4A01E236D1F35002BF6B5 /* EventCell.swift in Sources */,
 				2DA379792381504900FDDF25 /* CalendarDatabase.swift in Sources */,

@@ -86,7 +86,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="didTapSetting:" destination="Ted-dY-TMV" eventType="touchUpInside" id="ERD-fm-3zI"/>
+                                                            <action selector="settingWasTapped:" destination="Ted-dY-TMV" eventType="touchUpInside" id="mKX-HS-vBp"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -115,7 +115,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="z5S-e7-ASU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyCell" id="z5S-e7-ASU">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z5S-e7-ASU" id="RuM-R5-7mu">
@@ -136,7 +136,7 @@
                                     <constraint firstAttribute="height" constant="70" id="p5U-gd-igo"/>
                                 </constraints>
                                 <color key="tintColor" name="title"/>
-                                <state key="normal" image="pencil" catalog="system"/>
+                                <state key="normal" image="btn_add"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="3"/>
@@ -149,7 +149,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="didTapWrite:" destination="Ted-dY-TMV" eventType="touchUpInside" id="Tfp-6A-Y9U"/>
+                                    <action selector="writingWasTapped:" destination="Ted-dY-TMV" eventType="touchUpInside" id="vAT-bS-376"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -198,7 +198,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil" catalog="system" width="64" height="56"/>
+        <image name="btn_add" width="15" height="15"/>
         <namedColor name="border">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

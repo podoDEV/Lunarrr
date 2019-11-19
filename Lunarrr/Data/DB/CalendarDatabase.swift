@@ -12,11 +12,6 @@ final class CalendarDatabase {
   private let realm: Realm
 
   init() {
-    let config = Realm.Configuration(
-        fileURL: Bundle.main.url(forResource: "com.podo.lunarrr", withExtension: "realm")
-    )
-
-//    self.realm = try! Realm(configuration: config)
     self.realm = try! Realm()
   }
 

@@ -17,15 +17,16 @@ final class EventListViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    analytics.log(.eventlist_view)
     eventTableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "EventCell")
     reload()
   }
 
-  @IBAction func didTapSetting(_ sender: Any) {
+  @IBAction func settingWasTapped(_ sender: Any) {
     navigator?.show(.setting, transition: .present)
   }
 
-  @IBAction func didTapWrite(_ sender: Any) {
+  @IBAction func writingWasTapped(_ sender: Any) {
     navigator?.show(.eventEdit(mode: .new, completion: reload), transition: .present)
   }
 

@@ -9,7 +9,6 @@
 import UIKit
 
 final class EventCell : UITableViewCell {
-
   @IBOutlet weak var containerView: UIView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var gregorianLabel: UILabel!
@@ -19,7 +18,10 @@ final class EventCell : UITableViewCell {
     didSet {
       guard let event = self.event else { return }
       titleLabel.text = event.title
-      gregorianLabel.text = event.stringForSolar
+      lunarLabel.text = "음력".appending(event.date?.stringForLunar() ?? "")
+      gregorianLabel.text = event.date?
+        .toNearestFutureIncludingToday()?
+        .stringForSolar()
     }
   }
 }

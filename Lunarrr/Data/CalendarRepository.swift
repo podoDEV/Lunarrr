@@ -16,7 +16,7 @@ final class CalendarRepository: CalendarDataSource {
   }
 
   func events() -> [Event] {
-    return local.selectEvents().map(Event.init)
+    return local.selectEvents().map(Event.init).sorted(by: <)
   }
 
   func newEvent(event: Event) {

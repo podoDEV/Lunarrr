@@ -24,10 +24,9 @@ final class EventEditViewController: BaseViewController {
   var mode: EventEditMode = .new
   var current = Date() {
     didSet {
-      let calendar = Calendar(identifier: .gregorian)
-      yearField.text = "\(calendar.component(.year, from: current))"
-      monthField.text = "\(calendar.component(.month, from: current))"
-      dayField.text = "\(calendar.component(.day, from: current))"
+      yearField.text = "\(Calendar.gregorian.component(.year, from: current))"
+      monthField.text = "\(Calendar.chinese.component(.month, from: current))"
+      dayField.text = "\(Calendar.chinese.component(.day, from: current))"
       datePicker.date = current
     }
   }
@@ -62,10 +61,9 @@ final class EventEditViewController: BaseViewController {
   private lazy var datePicker: UIDatePicker = {
     let datePicker = UIDatePicker()
     datePicker.datePickerMode = .date
-    datePicker.maximumDate = self.current
     datePicker.backgroundColor = .white
     datePicker.timeZone = .current
-    datePicker.calendar = Calendar(identifier: .gregorian)
+    datePicker.calendar = Calendar.chinese
     return datePicker
   }()
 
@@ -86,16 +84,24 @@ final class EventEditViewController: BaseViewController {
     modeLabel.text = mode.modeTitle
     titleField.text = mode.eventTitle
     current = mode.startDate
-    createButton.isHidden = mode != .new
-    editButton.isHidden = mode == .new
-    deleteButton.isHidden = mode == .new
+    switch mode {
+    case .new:
+      analytics.log(.create_view)
+      editButton.isHidden = true
+      deleteButton.isHidden = true
+      enableButton(button: createButton, enable: false)
+    case .edit(let event):
+      analytics.log(.edit_view(event))
+      createButton.isHidden = true
+      enableButton(button: editButton, enable: false)
+    }
   }
 
-  @IBAction func didTapClose(_ sender: Any) {
+  @IBAction func closingWasTapped(_ sender: Any) {
     navigator?.pop(isModal: true)
   }
 
-  @IBAction func didTapCreate(_ sender: Any) {
+  @IBAction func createWasTapped(_ sender: Any) {
     guard let eventTitle = titleField.text else { return }
     let event = Event(title: eventTitle, date: current)
     dataSource?.newEvent(event: event)
@@ -103,7 +109,7 @@ final class EventEditViewController: BaseViewController {
     navigator?.pop(isModal: true)
   }
 
-  @IBAction func didTapEdit(_ sender: Any) {
+  @IBAction func editWasTapped(_ sender: Any) {
     guard let eventTitle = titleField.text else { return }
     guard case let .edit(event) = mode else { return }
     event.title = eventTitle
@@ -113,7 +119,7 @@ final class EventEditViewController: BaseViewController {
     navigator?.pop(isModal: true)
   }
 
-  @IBAction func didTapDelete(_ sender: Any) {
+  @IBAction func deleteWasTapped(_ sender: Any) {
     guard case let .edit(event) = mode else { return }
     guard let id = event.id else { return }
     dataSource?.deleteEvent(id: id)
@@ -121,8 +127,13 @@ final class EventEditViewController: BaseViewController {
     navigator?.pop(isModal: true)
   }
 
+  @IBAction func textFieldDidChange(_ sender: Any) {
+    validate(text: titleField.text, date: current)
+  }
+
   @objc func endUpdateDate() {
     current = datePicker.date
+    validate(text: titleField.text, date: current)
     resignDateFields()
   }
 
@@ -134,5 +145,31 @@ final class EventEditViewController: BaseViewController {
     yearField.resignFirstResponder()
     monthField.resignFirstResponder()
     dayField.resignFirstResponder()
+  }
+
+  func validate(text currentText: String?, date: Date) {
+    switch mode {
+    case .new:
+      let enable = currentText?.isEmpty == false
+      enableButton(button: createButton, enable: enable)
+    case .edit(let event):
+      let enable = currentText?.isEmpty == false
+        && (date != event.date || currentText != event.title)
+      enableButton(button: editButton, enable: enable)
+    }
+  }
+
+  func enableButton(button: UIButton, enable: Bool) {
+    if enable {
+      let color = UIColor(named: "title")
+      button.isEnabled = true
+      button.setTitleColor(color, for: .normal)
+      button.layer.borderColor = color?.cgColor
+    } else {
+      let color = UIColor(named: "border")
+      button.isEnabled = false
+      button.setTitleColor(color, for: .normal)
+      button.layer.borderColor = color?.cgColor
+    }
   }
 }

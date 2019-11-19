@@ -9,20 +9,10 @@
 import Foundation
 import Scope
 
-class Event: Equatable {
+class Event: Equatable, Comparable {
   var id: String?
   var title: String?
-  var date: Date?
-
-  var stringForSolar: String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "M월 d일"
-    dateFormatter.locale = .current
-    dateFormatter.calendar = Calendar(identifier: .gregorian)
-
-    guard let date = self.date else { return "" }
-    return dateFormatter.string(from: date)
-  }
+  var date: Date? // lunar
 
   init(title: String, date: Date) {
     self.title = title
@@ -48,5 +38,11 @@ class Event: Equatable {
   static func == (lhs: Event, rhs: Event) -> Bool {
     return lhs.title == rhs.title
       && lhs.date == rhs.date
+  }
+
+  static func < (lhs: Event, rhs: Event) -> Bool {
+    guard let date1 = lhs.date?.toNearestFutureIncludingToday() else { return true }
+    guard let date2 = rhs.date?.toNearestFutureIncludingToday() else { return true }
+    return date2.compare(date1) == .orderedDescending
   }
 }

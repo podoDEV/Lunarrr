@@ -13,27 +13,28 @@ typealias LunarrrAnalytics = Umbrella.Analytics<AnalyticsEvent>
 let analytics = LunarrrAnalytics()
 
 enum AnalyticsEvent {
-  case main_view
+  case eventlist_view
   case create_view
-
-  case viewNote(noteID: Int)
+  case edit_view(Event)
+  case setting_view
 }
 
 extension AnalyticsEvent: EventType {
   func name(for provider: ProviderType) -> String? {
     switch self {
-    case .main_view: return "main_view"
+    case .eventlist_view: return "eventlist_view"
     case .create_view: return "create_view"
-
-    case .viewNote:return "view_note"
+    case .edit_view: return "edit_view"
+    case .setting_view:return "setting_view"
     }
   }
 
   func parameters(for provider: ProviderType) -> [String: Any]? {
     switch self {
-    case .viewNote(let noteID):
+    case .edit_view(let event):
       return [
-        "note_id": noteID
+        "title": event.title ?? "",
+        "date": event.date?.description ?? ""
       ]
     default:
       return nil
