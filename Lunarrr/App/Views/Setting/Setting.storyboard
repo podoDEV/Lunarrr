@@ -25,11 +25,23 @@
                                 <rect key="frame" x="14" y="44" width="386" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연동하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O60-ew-ZKj">
-                                        <rect key="frame" x="0.0" y="26" width="386" height="28"/>
+                                        <rect key="frame" x="0.0" y="26" width="346" height="28"/>
                                         <fontDescription key="fontDescription" name="S-CoreDream-6Bold" family="S-Core Dream" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zK3-Pp-IXc">
+                                        <rect key="frame" x="346" y="20" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="6Rf-pH-G4w"/>
+                                            <constraint firstAttribute="height" constant="40" id="gAm-S8-ux0"/>
+                                            <constraint firstAttribute="width" secondItem="zK3-Pp-IXc" secondAttribute="height" multiplier="1:1" id="ybD-ht-OpU"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_close"/>
+                                        <connections>
+                                            <action selector="closeWasTapped:" destination="LEw-hA-1a3" eventType="touchUpInside" id="buT-lU-rsg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="art-Sw-hkD"/>
@@ -62,6 +74,7 @@
                         <viewLayoutGuide key="safeArea" id="wfh-0w-ZrY"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="zK3-Pp-IXc" id="Zr6-vP-8q4"/>
                         <outlet property="tableView" destination="QgC-8H-vWL" id="IWn-OK-t9j"/>
                     </connections>
                 </viewController>
@@ -70,4 +83,7 @@
             <point key="canvasLocation" x="1197.1014492753625" y="115.84821428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_close" width="24" height="24"/>
+    </resources>
 </document>

@@ -12,6 +12,7 @@ final class EventListViewController: BaseViewController {
   @IBOutlet weak var yearLabel: UILabel!
   @IBOutlet weak var eventTableView: UITableView!
   @IBOutlet weak var settingButton: UIButton!
+  @IBOutlet weak var writeButton: UIButton!
 
   var dataSource: CalendarDataSource?
   var events: [Event] = []
@@ -20,6 +21,9 @@ final class EventListViewController: BaseViewController {
     super.viewDidLoad()
     analytics.log(.eventlist_view)
     eventTableView.register(UINib(nibName: "EventCell", bundle: Bundle.main), forCellReuseIdentifier: "EventCell")
+    let borderColor = UIColor(named: "border")
+    settingButton.layer.borderColor = borderColor?.cgColor
+    writeButton.layer.borderColor = borderColor?.cgColor
     reload()
   }
 

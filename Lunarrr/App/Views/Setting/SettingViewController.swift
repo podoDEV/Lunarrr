@@ -10,6 +10,7 @@ import UIKit
 
 final class SettingViewController: BaseViewController {
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var closeButton: UIButton!
 
   var syncCalendars: [CalendarProvider] = [.apple, .google]
 
@@ -17,6 +18,13 @@ final class SettingViewController: BaseViewController {
     super.viewDidLoad()
     tableView.register(UINib(nibName: "SyncCell", bundle: Bundle.main), forCellReuseIdentifier: "SyncCell")
     analytics.log(.setting_view)
+    if #available(iOS 13, *) {
+      closeButton.isHidden = true
+    }
+  }
+
+  @IBAction func closeWasTapped(_ sender: Any) {
+    navigator?.pop(isModal: true)
   }
 }
 

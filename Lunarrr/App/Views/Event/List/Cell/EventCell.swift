@@ -17,6 +17,8 @@ final class EventCell : UITableViewCell {
   var event: Event? {
     didSet {
       guard let event = self.event else { return }
+      let borderColor = UIColor(named: "border")
+      containerView.layer.borderColor = borderColor?.cgColor
       titleLabel.text = event.title
       lunarLabel.text = "음력".appending(event.date?.stringForLunar() ?? "")
       gregorianLabel.text = event.date?

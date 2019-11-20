@@ -11,9 +11,20 @@ import UIKit
 final class EventEditViewController: BaseViewController, UITextFieldDelegate {
   @IBOutlet weak var containerView: UIView!
   @IBOutlet weak var modeLabel: UILabel!
+
+  @IBOutlet weak var titleContainerView: UIView!
   @IBOutlet weak var titleField: UITextField!
+
+
+  @IBOutlet weak var yearContainerView: UIView!
   @IBOutlet weak var yearField: UITextField!
+
+
+  @IBOutlet weak var monthContainerView: UIView!
   @IBOutlet weak var monthField: UITextField!
+
+
+  @IBOutlet weak var dayContainerView: UIView!
   @IBOutlet weak var dayField: UITextField!
   @IBOutlet weak var createButton: UIButton!
   @IBOutlet weak var editButton: UIButton!
@@ -72,11 +83,21 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
   }
 
   func setupSubviews() {
+    containerView.layer.borderColor = UIColor(named: "border")?.cgColor
     containerView.backgroundColor = UIColor(named: "background")
+
+    let titleColor = UIColor(named: "title")?.cgColor
+    titleContainerView.layer.borderColor = titleColor
+
+    yearContainerView.layer.borderColor = titleColor
     yearField.inputAccessoryView = toolbar
     yearField.inputView = datePicker
+
+    monthContainerView.layer.borderColor = titleColor
     monthField.inputAccessoryView = toolbar
     monthField.inputView = datePicker
+
+    dayContainerView.layer.borderColor = titleColor
     dayField.inputAccessoryView = toolbar
     dayField.inputView = datePicker
 
