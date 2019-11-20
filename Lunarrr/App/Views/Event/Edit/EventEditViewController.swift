@@ -61,7 +61,6 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
   private lazy var datePicker: UIDatePicker = {
     let datePicker = UIDatePicker()
     datePicker.datePickerMode = .date
-    datePicker.backgroundColor = .white
     datePicker.timeZone = .current
     datePicker.calendar = Calendar.chinese
     return datePicker

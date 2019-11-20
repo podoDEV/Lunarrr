@@ -16,9 +16,12 @@ def app
   pod 'Umbrella/Firebase'
 
   # SDK
-  pod 'Firebase/Core'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
+
+  # DB
   pod 'RealmSwift'
 
   # Misc.

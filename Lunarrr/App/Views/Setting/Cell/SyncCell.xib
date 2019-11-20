@@ -37,6 +37,12 @@
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vgz-df-0lU">
                         <rect key="frame" x="307" y="14.5" width="51" height="31"/>
                     </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 준비중.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvf-M9-bCO">
+                        <rect key="frame" x="269" y="22.5" width="87" height="15"/>
+                        <fontDescription key="fontDescription" name="S-CoreDream-4Regular" family="S-Core Dream" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="BiT-zP-htN" firstAttribute="centerY" secondItem="uBQ-4o-7cB" secondAttribute="centerY" id="23I-2r-FZg"/>
@@ -44,11 +50,18 @@
                     <constraint firstItem="uBQ-4o-7cB" firstAttribute="top" secondItem="icw-9c-iWh" secondAttribute="top" constant="11" id="5Fp-BG-rIc"/>
                     <constraint firstItem="vgz-df-0lU" firstAttribute="leading" secondItem="BiT-zP-htN" secondAttribute="trailing" constant="-13" id="8FZ-qf-q5m"/>
                     <constraint firstItem="uBQ-4o-7cB" firstAttribute="leading" secondItem="icw-9c-iWh" secondAttribute="leading" constant="14" id="GUF-yR-6Wf"/>
+                    <constraint firstItem="Lvf-M9-bCO" firstAttribute="centerY" secondItem="vgz-df-0lU" secondAttribute="centerY" id="U87-wT-fJx"/>
                     <constraint firstAttribute="trailing" secondItem="vgz-df-0lU" secondAttribute="trailing" constant="14" id="Yhd-rE-p9o"/>
                     <constraint firstItem="BiT-zP-htN" firstAttribute="leading" secondItem="uBQ-4o-7cB" secondAttribute="trailing" constant="13" id="b3D-NE-e8R"/>
                     <constraint firstItem="vgz-df-0lU" firstAttribute="centerY" secondItem="uBQ-4o-7cB" secondAttribute="centerY" id="ioB-dC-WQb"/>
+                    <constraint firstItem="Lvf-M9-bCO" firstAttribute="trailing" secondItem="vgz-df-0lU" secondAttribute="trailing" id="ztQ-6w-vvP"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="calendarImageView" destination="uBQ-4o-7cB" id="OjB-CK-d4H"/>
+                <outlet property="syncSwitch" destination="vgz-df-0lU" id="EwG-UX-3qL"/>
+                <outlet property="titleLabel" destination="BiT-zP-htN" id="QAA-0H-FAo"/>
+            </connections>
             <point key="canvasLocation" x="627.536231884058" y="106.47321428571428"/>
         </tableViewCell>
     </objects>

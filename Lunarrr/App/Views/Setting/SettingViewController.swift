@@ -11,6 +11,8 @@ import UIKit
 final class SettingViewController: BaseViewController {
   @IBOutlet weak var tableView: UITableView!
 
+  var syncCalendars: [CalendarProvider] = [.apple, .google]
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UINib(nibName: "SyncCell", bundle: Bundle.main), forCellReuseIdentifier: "SyncCell")
@@ -20,11 +22,12 @@ final class SettingViewController: BaseViewController {
 
 extension SettingViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return syncCalendars.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "SyncCell") as! SyncCell
+    cell.provider = syncCalendars[indexPath.row]
     return cell
   }
 }

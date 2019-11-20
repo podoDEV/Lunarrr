@@ -9,6 +9,7 @@
 import UIKit
 
 final class EventListViewController: BaseViewController {
+  @IBOutlet weak var yearLabel: UILabel!
   @IBOutlet weak var eventTableView: UITableView!
   @IBOutlet weak var settingButton: UIButton!
 
@@ -31,7 +32,8 @@ final class EventListViewController: BaseViewController {
   }
 
   func reload() {
-    self.events = dataSource?.events() ?? []
+    yearLabel.text = "\(Date.currentYear)년"
+    events = dataSource?.events() ?? []
     eventTableView.reloadData()
   }
 }

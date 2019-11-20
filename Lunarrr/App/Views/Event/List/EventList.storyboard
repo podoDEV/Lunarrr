@@ -172,6 +172,7 @@
                     <connections>
                         <outlet property="eventTableView" destination="fuX-FZ-Bcg" id="qwy-Mj-j7G"/>
                         <outlet property="settingButton" destination="8Jh-CX-Cj7" id="7Is-2z-XJ7"/>
+                        <outlet property="yearLabel" destination="beB-Ti-EVd" id="TJW-vn-ajb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szc-Mq-l4K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

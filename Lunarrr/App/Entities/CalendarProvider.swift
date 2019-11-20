@@ -7,6 +7,13 @@
 //
 
 enum CalendarProvider: String {
-  case icloud
+  case apple
   case google
+
+  var title: String {
+    switch self {
+    case .apple: return "Apple Calendar"
+    case .google: return "Google Calendar"
+    }
+  }
 }

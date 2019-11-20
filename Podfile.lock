@@ -3,6 +3,8 @@ PODS:
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - Fabric (1.10.2)
+  - Firebase/Analytics (6.10.0):
+    - Firebase/Core
   - Firebase/Core (6.10.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.1.3)
@@ -91,6 +93,7 @@ DEPENDENCIES:
   - Alamofire
   - Crashlytics
   - Fabric
+  - Firebase/Analytics
   - Firebase/Core
   - KeychainAccess
   - Moya
@@ -152,6 +155,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: aaf2ebd7dac2e952991f46a82ed24ad642867ae2
   Umbrella: d5b508a0efea3c50f4764ad96035d08eafee26bc
 
-PODFILE CHECKSUM: 297ca921894d3e7f649f80d646a95672a60a48e5
+PODFILE CHECKSUM: d7165f95527bf9d250f31518ee4cecdf2c0a19b1
 
 COCOAPODS: 1.8.4
