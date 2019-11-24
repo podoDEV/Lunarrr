@@ -19,11 +19,26 @@ final class EventCell : UITableViewCell {
       guard let event = self.event else { return }
       let borderColor = UIColor(named: "border")
       containerView.layer.borderColor = borderColor?.cgColor
+      gregorianLabel.textColor = UIColor(named: "date_solar")
       titleLabel.text = event.title
       lunarLabel.text = "음력".appending(event.date?.stringForLunar() ?? "")
       gregorianLabel.text = event.date?
         .toNearestFutureIncludingToday()?
         .stringForSolar()
     }
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    let cornerRadius = 15.f
+    containerView.layer.cornerRadius = cornerRadius
+    containerView.layer.shadowPath = UIBezierPath(
+      roundedRect: containerView.bounds,
+      cornerRadius: cornerRadius
+    ).cgPath
+    containerView.layer.shadowRadius = 2
+    containerView.layer.shadowColor = UIColor(named: "border")?.cgColor
+    containerView.layer.shadowOffset = .zero
+    containerView.layer.shadowOpacity = 1
   }
 }

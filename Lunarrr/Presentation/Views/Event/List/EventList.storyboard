@@ -149,7 +149,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="writingWasTapped:" destination="Ted-dY-TMV" eventType="touchUpInside" id="vAT-bS-376"/>
+                                    <action selector="writingTouchDown:" destination="Ted-dY-TMV" eventType="touchDown" id="wMH-uD-i5S"/>
+                                    <action selector="writingTouchUpInside:" destination="Ted-dY-TMV" eventType="touchUpInside" id="4Gg-zO-g2R"/>
+                                    <action selector="writingTouchUpOutside:" destination="Ted-dY-TMV" eventType="touchUpOutside" id="jmo-j7-gy4"/>
                                 </connections>
                             </button>
                         </subviews>

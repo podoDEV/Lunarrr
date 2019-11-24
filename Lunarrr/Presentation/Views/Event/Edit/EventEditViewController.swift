@@ -124,6 +124,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
     eventsUseCase?.new(event)
     didEditFinish?()
     navigator?.pop(isModal: true)
+    Vibration.success.vibrate()
   }
 
   @IBAction func editWasTapped(_ sender: Any) {
@@ -134,6 +135,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
     eventsUseCase?.update(event)
     didEditFinish?()
     navigator?.pop(isModal: true)
+    Vibration.success.vibrate()
   }
 
   @IBAction func deleteWasTapped(_ sender: Any) {

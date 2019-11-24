@@ -26,6 +26,7 @@
 		2D8497092381A928001C0EEC /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8497082381A928001C0EEC /* Navigator.swift */; };
 		2D84970C2381AB9E001C0EEC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D84970B2381AB9E001C0EEC /* BaseViewController.swift */; };
 		2D84970E2381AC8F001C0EEC /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D84970D2381AC8F001C0EEC /* ApplicationCoordinator.swift */; };
+		2D8577A4238A6B3D00745634 /* Vibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8577A3238A6B3D00745634 /* Vibration.swift */; };
 		2D87768823765A16004FB433 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D87768723765A16004FB433 /* EventCell.xib */; };
 		2D87768C23765E10004FB433 /* SCDream6.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D87768923765E10004FB433 /* SCDream6.otf */; };
 		2D87768D23765E10004FB433 /* SCDream2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D87768A23765E10004FB433 /* SCDream2.otf */; };
@@ -84,6 +85,7 @@
 		2D8497082381A928001C0EEC /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		2D84970B2381AB9E001C0EEC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2D84970D2381AC8F001C0EEC /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		2D8577A3238A6B3D00745634 /* Vibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibration.swift; sourceTree = "<group>"; };
 		2D87768723765A16004FB433 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		2D87768923765E10004FB433 /* SCDream6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream6.otf; sourceTree = "<group>"; };
 		2D87768A23765E10004FB433 /* SCDream2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream2.otf; sourceTree = "<group>"; };
@@ -297,6 +299,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		2D8577A2238A6B2B00745634 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2D8577A3238A6B3D00745634 /* Vibration.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		2D87768F23766E4F004FB433 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +490,7 @@
 		2DF1BD512363E879004F54E8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2D8577A2238A6B2B00745634 /* Util */,
 				2DD4A021236D26FB002BF6B5 /* Extensions */,
 				2D05266B23800A9B008B2CC8 /* Logger */,
 			);
@@ -698,6 +709,7 @@
 				2D30E64F23842DD2002BB6C3 /* Calendar+Additions.swift in Sources */,
 				2DBE098523894A8400B189D2 /* EventsUseCase.swift in Sources */,
 				2DA3796F23814BF800FDDF25 /* AppleCalendarService.swift in Sources */,
+				2D8577A4238A6B3D00745634 /* Vibration.swift in Sources */,
 				2DD4A01E236D1F35002BF6B5 /* EventCell.swift in Sources */,
 				2DA379792381504900FDDF25 /* CalendarDatabase.swift in Sources */,
 				2DA3796A23812C1700FDDF25 /* Int+Additions.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 final class EventListViewController: BaseViewController {
   @IBOutlet weak var yearLabel: UILabel!
@@ -31,8 +32,32 @@ final class EventListViewController: BaseViewController {
     navigator?.show(.setting, transition: .present)
   }
 
-  @IBAction func writingWasTapped(_ sender: Any) {
-    navigator?.show(.eventEdit(mode: .new, completion: reload), transition: .present)
+  @IBAction func writingTouchDown(_ sender: Any) {
+    Vibration.heavy.vibrate()
+    UIView.animate(withDuration: 0.2) {
+      self.writeButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+    }
+  }
+
+  @IBAction func writingTouchUpInside(_ sender: Any) {
+    Vibration.heavy.vibrate()
+    UIView.animate(
+      withDuration: 0.2,
+      animations: {
+        self.writeButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+      },
+      completion: { _ in
+        UIView.animate(withDuration: 0.1) {
+          self.writeButton.transform = CGAffineTransform.identity
+          self.navigator?.show(.eventEdit(mode: .new, completion: self.reload), transition: .present)
+        }
+    })
+  }
+
+  @IBAction func writingTouchUpOutside(_ sender: Any) {
+    UIView.animate(withDuration: 0.2) {
+      self.writeButton.transform = CGAffineTransform.identity
+    }
   }
 
   func reload() {
@@ -56,6 +81,7 @@ extension EventListViewController: UITableViewDataSource {
 
 extension EventListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    Vibration.medium.vibrate()
     navigator?.show(
       .eventEdit(
         mode: .edit(events[indexPath.row]),
