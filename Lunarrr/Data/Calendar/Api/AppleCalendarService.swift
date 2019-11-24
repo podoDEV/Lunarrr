@@ -16,9 +16,6 @@ final class AppleCalendarService: CalendarServiceType {
 
   private(set) var type: CalendarProviderType = .apple
   private let eventStore: EKEventStore
-  private lazy var calendar: EKCalendar = {
-    return self.retrieveCalendar()
-  }()
 
   init() {
     self.eventStore = EKEventStore()
@@ -35,17 +32,6 @@ final class AppleCalendarService: CalendarServiceType {
     }
   }
 
-//  func updateEvent(_ event: Event, completion: @escaping CalendarServiceResponse) {
-//    authorization { result in
-//      switch result {
-//      case .success:
-//        self.addEventToCalendar(event: event, completion: completion)
-//      case .failure(let error):
-//        completion(.failure(error))
-//      }
-//    }
-//  }
-
   func removeEvent(_ event: Event, completion: @escaping CalendarServiceResponse) {
     authorization { result in
       switch result {
@@ -54,6 +40,14 @@ final class AppleCalendarService: CalendarServiceType {
       case .failure(let error):
         completion(.failure(error))
       }
+    }
+  }
+
+  func removeAllEvents() {
+    do {
+      try eventStore.removeCalendar(retrieveCalendar(), commit: true)
+    } catch {
+
     }
   }
 
@@ -102,22 +96,6 @@ private extension AppleCalendarService {
       }
     }
   }
-//
-//  func updateEventToCalendar(event: Event, completion: @escaping CalendarServiceResponse) {
-//    let eventToUpdate = generateEvent(event: event)
-//    if eventAlreadyExists(event: eventToUpdate) {
-//      self.removeEventFromCalendar(event: event) { result in
-//        switch result {
-//        case .success:
-//          self.addEventToCalendar(event: event, completion: completion)
-//        case .failure(let error):
-//          completion(.failure(error))
-//        }
-//      }
-//    } else {
-//      self.addEventToCalendar(event: event, completion: completion)
-//    }
-//  }
 
   func removeEventFromCalendar(event: Event, completion: @escaping CalendarServiceResponse) {
     let eventToRemove = generateEvent(event: event)
@@ -137,7 +115,7 @@ private extension AppleCalendarService {
   /// - Parameter event
   func generateEvent(event: Event) -> EKEvent {
     let newEvent = EKEvent(eventStore: eventStore)
-    newEvent.calendar = self.calendar
+    newEvent.calendar = retrieveCalendar()
     newEvent.title = event.title
     newEvent.startDate = event.date
     newEvent.endDate = event.date
@@ -151,7 +129,7 @@ private extension AppleCalendarService {
     let predicate = eventStore.predicateForEvents(
       withStart: eventToAdd.startDate,
       end: eventToAdd.endDate,
-      calendars: nil
+      calendars: [retrieveCalendar()]
     )
 
     let existingEvents = eventStore.events(matching: predicate)
@@ -168,7 +146,7 @@ private extension AppleCalendarService {
     let predicate = eventStore.predicateForEvents(
       withStart: ekEvent.startDate,
       end: ekEvent.endDate,
-      calendars: [self.calendar]
+      calendars: [retrieveCalendar()]
     )
 
     let existingEvents = eventStore.events(matching: predicate)

@@ -25,6 +25,12 @@ class Event: Equatable, Comparable {
     self.date = event.date
   }
 
+  init(event: Event) {
+    self.id = event.id
+    self.title = event.title
+    self.date = event.date
+  }
+
   func convertForRealm() -> RealmEvent {
     return RealmEvent().also {
       if let id = self.id {

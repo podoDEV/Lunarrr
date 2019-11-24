@@ -7,7 +7,7 @@
 //
 
 protocol CalendarDataSource {
-  func events() -> [Event]
+  func events(types: [CalendarProviderType]) -> [Event]
   func event(id: String) -> Event?
   func newEvent(event: Event, types: [CalendarProviderType], completion: (Result<Event, CalendarError>) -> Void)
   func updateEvent(event: Event, types: [CalendarProviderType], completion: (Result<Event, CalendarError>) -> Void)
@@ -15,6 +15,7 @@ protocol CalendarDataSource {
 
   func authorization(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
   func syncCalendar(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
+  func unsyncCalendar(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
 }
 
 protocol CalendarLocalDataSource {
@@ -22,7 +23,7 @@ protocol CalendarLocalDataSource {
   func selectEvent(id: String) -> RealmEvent?
   func insertEvent(event: RealmEvent, completion: (Result<RealmEvent, CalendarError>) -> Void)
   func updateEvent(event: RealmEvent, completion: (Result<RealmEvent, CalendarError>) -> Void)
-  func deleteEvent(id: String, completion: (Result<Bool, CalendarError>) -> Void)
+  func deleteEvent(id: String, completion: CalendarServiceResponse)
 }
 
 protocol CalendarRemoteDataSource {
@@ -30,6 +31,7 @@ protocol CalendarRemoteDataSource {
   func insertEvent(event: Event, types: [CalendarProviderType])
   func updateEvent(oldEvent: Event, newEvent: Event, types: [CalendarProviderType])
   func deleteEvent(event: Event, types: [CalendarProviderType])
+  func deleteAllEvent(type: CalendarProviderType)
 
   func authorization(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
 }

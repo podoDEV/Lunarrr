@@ -19,9 +19,7 @@ final class CalendarRemoteRepository: CalendarRemoteDataSource {
     type: CalendarProviderType,
     completion: @escaping CalendarServiceResponse
   ) {
-    guard let service = self.findCalService(type: type) else {
-      fatalError("Failed to find calendar provider - \(type.title)")
-    }
+    let service = self.findCalService(type: type)
     events.forEach { event in
       service.addEvent(event) { result in
         switch result {
@@ -38,42 +36,45 @@ final class CalendarRemoteRepository: CalendarRemoteDataSource {
 
   func insertEvent(event: Event, types: [CalendarProviderType]) {
     for type in types {
-      if let service = self.findCalService(type: type) {
-        service.addEvent(event) { _ in }
-      }
+      let service = self.findCalService(type: type)
+      service.addEvent(event) { _ in }
     }
   }
 
   func updateEvent(oldEvent: Event, newEvent: Event, types: [CalendarProviderType]) {
     for type in types {
-      if let service = self.findCalService(type: type) {
-        service.removeEvent(oldEvent) { _ in }
-        service.addEvent(newEvent) { _ in }
-      }
+      let service = self.findCalService(type: type)
+      service.removeEvent(oldEvent) { _ in }
+      service.addEvent(newEvent) { _ in }
     }
   }
 
   func deleteEvent(event: Event, types: [CalendarProviderType]) {
     for type in types {
-      if let service = self.findCalService(type: type) {
-        service.removeEvent(event) { _ in }
-      }
+      let service = self.findCalService(type: type)
+      service.removeEvent(event) { _ in }
     }
+  }
+
+  func deleteAllEvent(type: CalendarProviderType) {
+    let service = self.findCalService(type: type)
+    service.removeAllEvents()
   }
 
   func authorization(
     type: CalendarProviderType,
     completion: @escaping CalendarServiceResponse
   ) {
-    guard let service = self.findCalService(type: type) else {
-      fatalError("Failed to find calendar provider - \(type.title)")
-    }
+    let service = self.findCalService(type: type)
     service.authorization(completion: completion)
   }
 }
 
 private extension CalendarRemoteRepository {
-  func findCalService(type: CalendarProviderType) -> CalendarServiceType? {
-    return calServices.first(where: { $0.type == type })
+  func findCalService(type: CalendarProviderType) -> CalendarServiceType {
+    guard let serivce = calServices.first(where: { $0.type == type }) else {
+      fatalError("Failed to find calendar provider - \(type.title)")
+    }
+    return serivce
   }
 }

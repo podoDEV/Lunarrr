@@ -51,7 +51,11 @@ private extension SyncUseCase {
   ) {
     let result = settingsDataSource.updateSync(type: type, sync: sync)
     if result {
-      calendarDataSource.syncCalendar(type: type, completion: completion)
+      if sync {
+        calendarDataSource.syncCalendar(type: type, completion: completion)
+      } else {
+        calendarDataSource.unsyncCalendar(type: type, completion: completion)
+      }
     } else {
       completion(.failure(.calendarSyncFailedInLocal))
     }

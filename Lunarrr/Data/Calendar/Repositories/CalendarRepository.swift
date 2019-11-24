@@ -16,8 +16,20 @@ final class CalendarRepository: CalendarDataSource {
     self.remote = remote
   }
 
-  func events() -> [Event] {
-    return local.selectEvents().map(Event.init).sorted(by: <)
+  func events(types: [CalendarProviderType]) -> [Event] {
+    let events = local.selectEvents()
+      .map(Event.init)
+      .sorted(by: <)
+
+    let needToUpdateEvents = events
+      .map(Event.init)
+      .map { $0.convertForRemote() }
+    
+    types.forEach { type in
+      remote.insertEvents(events: needToUpdateEvents, type: type) { _ in }
+    }
+
+    return events
   }
 
   func event(id: String) -> Event? {
@@ -58,12 +70,9 @@ final class CalendarRepository: CalendarDataSource {
     local.updateEvent(event: event.convertForRealm()) { result in
       switch result {
       case .success(let newDBEvent):
-//        remote.deleteEvent(event: oldEvent, types: types)
-
         let newEvent = Event(event: newDBEvent).convertForRemote()
-
         remote.updateEvent(oldEvent: oldEvent, newEvent: newEvent, types: types)
-//        remote.updateEvent(event: newEvent, types: types)
+
         completion(.success(newEvent))
       case .failure(let error):
         completion(.failure(error))
@@ -97,11 +106,13 @@ final class CalendarRepository: CalendarDataSource {
   }
 
   func syncCalendar(type: CalendarProviderType, completion: @escaping CalendarServiceResponse) {
-    let events = local.selectEvents().map(Event.init)
+    let events = local.selectEvents()
+      .map(Event.init)
+      .map { $0.convertForRemote() }
     remote.insertEvents(events: events, type: type, completion: completion)
   }
 
   func unsyncCalendar(type: CalendarProviderType, completion: @escaping CalendarServiceResponse) {
-
+    remote.deleteAllEvent(type: type)
   }
 }

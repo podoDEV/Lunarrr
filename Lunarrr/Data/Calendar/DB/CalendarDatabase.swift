@@ -41,16 +41,13 @@ final class CalendarDatabase {
         guard
           let event = realm.object(ofType: RealmEvent.self, forPrimaryKey: id)
           else {
-            log.error("eventNotRemovedFromCalendar")
             completion(.failure(.eventNotRemovedFromCalendar))
             return
         }
         realm.delete(event)
-        log.info("eventRemoved")
         completion(.success(true))
       }
     } catch {
-      log.error("eventNotRemovedFromCalendar")
       completion(.failure(.eventNotRemovedFromCalendar))
     }
   }

@@ -72,7 +72,7 @@ private extension SettingsRepository {
       try keychain.set(settingsData, key: Key.settings)
       return settings
     } catch _ {
-      log.error("Failed to save the settings to the keychain.")
+      log.error("Failed to save the settings to the keychain with key - \(Key.settings)")
       return nil
     }
   }
