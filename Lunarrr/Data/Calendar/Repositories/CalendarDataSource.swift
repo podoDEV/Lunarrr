@@ -6,19 +6,7 @@
 //  Copyright © 2019 podo. All rights reserved.
 //
 
-protocol CalendarDataSource {
-  func events(types: [CalendarProviderType]) -> [Event]
-  func event(id: String) -> Event?
-  func newEvent(event: Event, types: [CalendarProviderType], completion: (Result<Event, CalendarError>) -> Void)
-  func updateEvent(event: Event, types: [CalendarProviderType], completion: (Result<Event, CalendarError>) -> Void)
-  func deleteEvent(id: String, types: [CalendarProviderType], completion: CalendarServiceResponse)
-
-  func authorization(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
-  func syncCalendar(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
-  func unsyncCalendar(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
-}
-
-protocol CalendarLocalDataSource {
+protocol CalendarLocalDataSourceType {
   func selectEvents() -> [RealmEvent]
   func selectEvent(id: String) -> RealmEvent?
   func insertEvent(event: RealmEvent, completion: (Result<RealmEvent, CalendarError>) -> Void)
@@ -26,12 +14,11 @@ protocol CalendarLocalDataSource {
   func deleteEvent(id: String, completion: CalendarServiceResponse)
 }
 
-protocol CalendarRemoteDataSource {
+protocol CalendarRemoteDataSourceType {
   func insertEvents(events: [Event], type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
   func insertEvent(event: Event, types: [CalendarProviderType])
   func updateEvent(oldEvent: Event, newEvent: Event, types: [CalendarProviderType])
   func deleteEvent(event: Event, types: [CalendarProviderType])
   func deleteAllEvent(type: CalendarProviderType)
-
   func authorization(type: CalendarProviderType, completion: @escaping CalendarServiceResponse)
 }

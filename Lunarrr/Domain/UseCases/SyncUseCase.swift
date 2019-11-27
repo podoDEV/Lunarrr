@@ -8,19 +8,19 @@
 
 class SyncUseCase: UseCase {
 
-  let calendarDataSource: CalendarDataSource
-  let settingsDataSource: SettingsDataSource
+  let calendarRepository: CalendarRepositoryType
+  let settingRepository: SettingRepositoryType
 
   init(
-    calendarDataSource: CalendarDataSource,
-    settingsDataSource: SettingsDataSource
+    calendarRepository: CalendarRepositoryType,
+    settingRepository: SettingRepositoryType
   ) {
-    self.calendarDataSource = calendarDataSource
-    self.settingsDataSource = settingsDataSource
+    self.calendarRepository = calendarRepository
+    self.settingRepository = settingRepository
   }
 
   func currentSettings() -> Settings? {
-    return settingsDataSource.current
+    return settingRepository.current
   }
 
   func updateSync(
@@ -32,7 +32,7 @@ class SyncUseCase: UseCase {
       updateDataSource(type: type, sync: sync, completion: completion)
       return
     }
-    calendarDataSource.authorization(type: type) { result in
+    calendarRepository.authorization(type: type) { result in
       switch result {
       case .success:
         self.updateDataSource(type: type, sync: sync, completion: completion)
@@ -49,12 +49,12 @@ private extension SyncUseCase {
     sync: Bool,
     completion: @escaping CalendarServiceResponse
   ) {
-    let result = settingsDataSource.updateSync(type: type, sync: sync)
+    let result = settingRepository.updateSync(type: type, sync: sync)
     if result {
       if sync {
-        calendarDataSource.syncCalendar(type: type, completion: completion)
+        calendarRepository.syncCalendar(type: type, completion: completion)
       } else {
-        calendarDataSource.unsyncCalendar(type: type, completion: completion)
+        calendarRepository.unsyncCalendar(type: type, completion: completion)
       }
     } else {
       completion(.failure(.calendarSyncFailedInLocal))

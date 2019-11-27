@@ -6,12 +6,12 @@
 //  Copyright © 2019 podo. All rights reserved.
 //
 
-final class CalendarRepository: CalendarDataSource {
+final class CalendarRepository: CalendarRepositoryType {
 
-  private let local: CalendarLocalDataSource
-  private let remote: CalendarRemoteDataSource
+  private let local: CalendarLocalDataSourceType
+  private let remote: CalendarRemoteDataSourceType
 
-  init(local: CalendarLocalDataSource, remote: CalendarRemoteDataSource) {
+  init(local: CalendarLocalDataSourceType, remote: CalendarRemoteDataSourceType) {
     self.local = local
     self.remote = remote
   }

@@ -1,12 +1,12 @@
 //
-//  CalendarLocalRepository.swift
+//  CalendarLocalDataSource.swift
 //  Lunarrr
 //
 //  Created by hb1love on 2019/11/17.
 //  Copyright © 2019 podo. All rights reserved.
 //
 
-final class CalendarLocalRepository: CalendarLocalDataSource {
+final class CalendarLocalDataSource: CalendarLocalDataSourceType {
 
   private var database: CalendarDatabase
 

@@ -30,15 +30,13 @@ final class EventCell : UITableViewCell {
 
   override func layoutSubviews() {
     super.layoutSubviews()
-    let cornerRadius = 15.f
-    containerView.layer.cornerRadius = cornerRadius
-    containerView.layer.shadowPath = UIBezierPath(
-      roundedRect: containerView.bounds,
-      cornerRadius: cornerRadius
-    ).cgPath
-    containerView.layer.shadowRadius = 2
-    containerView.layer.shadowColor = UIColor(named: "border")?.cgColor
-    containerView.layer.shadowOffset = .zero
-    containerView.layer.shadowOpacity = 1
+    containerView.shadow(
+      color: UIColor(named: "border"),
+      opacity: 1,
+      offSet: .zero,
+      radius: 2,
+      cornerRadius: 15,
+      scale: true
+    )
   }
 }

@@ -27,7 +27,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var deleteButton: UIButton!
 
-  var eventsUseCase: EventsUseCase?
+  var eventUseCase: EventUseCase?
 
   var mode: EventEditMode = .new
   var current = Date() {
@@ -121,7 +121,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
   @IBAction func createWasTapped(_ sender: Any) {
     guard let eventTitle = titleField.text else { return }
     let event = Event(title: eventTitle, date: current)
-    eventsUseCase?.new(event)
+    eventUseCase?.new(event)
     didEditFinish?()
     navigator?.pop(isModal: true)
     Vibration.success.vibrate()
@@ -132,7 +132,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
     guard case let .edit(event) = mode else { return }
     event.title = eventTitle
     event.date = current
-    eventsUseCase?.update(event)
+    eventUseCase?.update(event)
     didEditFinish?()
     navigator?.pop(isModal: true)
     Vibration.success.vibrate()
@@ -196,7 +196,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
   func deleteEvent() {
     guard case let .edit(event) = mode else { return }
     guard let id = event.id else { return }
-    eventsUseCase?.delete(id)
+    eventUseCase?.delete(id)
     didEditFinish?()
     navigator?.pop(isModal: true)
   }

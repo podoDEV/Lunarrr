@@ -1,5 +1,5 @@
 //
-//  SettingsRepository.swift
+//  SettingRepository.swift
 //  Lunarrr
 //
 //  Created by hb1love on 2019/11/23.
@@ -8,7 +8,7 @@
 
 import KeychainAccess
 
-final class SettingsRepository: SettingsDataSource {
+final class SettingRepository: SettingRepositoryType {
 
   // MARK: Constants
 
@@ -36,7 +36,7 @@ final class SettingsRepository: SettingsDataSource {
   }
 }
 
-private extension SettingsRepository {
+private extension SettingRepository {
 
   func makeNewSettings(type: CalendarProviderType, sync: Bool) -> Settings {
     guard let newSettings = current?.copy() as? Settings else {

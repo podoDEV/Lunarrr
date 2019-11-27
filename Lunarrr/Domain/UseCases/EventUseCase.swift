@@ -1,30 +1,30 @@
 //
-//  EventsUseCase.swift
+//  EventUseCase.swift
 //  Lunarrr
 //
 //  Created by hb1love on 2019/11/23.
 //  Copyright © 2019 podo. All rights reserved.
 //
 
-class EventsUseCase: UseCase {
+class EventUseCase: UseCase {
 
-  let calendarDataSource: CalendarDataSource
-  let settingsDataSource: SettingsDataSource
+  let calendarRepository: CalendarRepositoryType
+  let settingRepository: SettingRepositoryType
 
   init(
-    calendarDataSource: CalendarDataSource,
-    settingsDataSource: SettingsDataSource
+    calendarRepository: CalendarRepositoryType,
+    settingRepository: SettingRepositoryType
   ) {
-    self.calendarDataSource = calendarDataSource
-    self.settingsDataSource = settingsDataSource
+    self.calendarRepository = calendarRepository
+    self.settingRepository = settingRepository
   }
 
   func getAll() -> [Event] {
-    return calendarDataSource.events(types: synchronizedProviders())
+    return calendarRepository.events(types: synchronizedProviders())
   }
 
   func new(_ event: Event) {
-    calendarDataSource.newEvent(event: event, types: synchronizedProviders()) { result in
+    calendarRepository.newEvent(event: event, types: synchronizedProviders()) { result in
       switch result {
       case .success:
         log.info("Successfully created the event!")
@@ -35,7 +35,7 @@ class EventsUseCase: UseCase {
   }
 
   func update(_ event: Event) {
-    calendarDataSource.updateEvent(event: event, types: synchronizedProviders()) { result in
+    calendarRepository.updateEvent(event: event, types: synchronizedProviders()) { result in
       switch result {
       case .success:
         log.info("Successfully updated the event!")
@@ -46,7 +46,7 @@ class EventsUseCase: UseCase {
   }
 
   func delete(_ id: String) {
-    calendarDataSource.deleteEvent(id: id, types: synchronizedProviders()) { result in
+    calendarRepository.deleteEvent(id: id, types: synchronizedProviders()) { result in
       switch result {
       case .success:
         log.info("Successfully deleted the event!")
@@ -57,9 +57,9 @@ class EventsUseCase: UseCase {
   }
 }
 
-private extension EventsUseCase {
+private extension EventUseCase {
   func synchronizedProviders() -> [CalendarProviderType] {
-    return (settingsDataSource.current?.providers ?? [])
+    return (settingRepository.current?.providers ?? [])
       .filter { $0.sync == true }
       .map { $0.providerType! }
   }

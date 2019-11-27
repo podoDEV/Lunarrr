@@ -15,7 +15,7 @@ final class EventListViewController: BaseViewController {
   @IBOutlet weak var settingButton: UIButton!
   @IBOutlet weak var writeButton: UIButton!
 
-  var eventsUseCase: EventsUseCase?
+  var eventUseCase: EventUseCase?
   var events: [Event] = []
 
   override func viewDidLoad() {
@@ -62,7 +62,7 @@ final class EventListViewController: BaseViewController {
 
   func reload() {
     yearLabel.text = "\(Date.currentYear)년"
-    events = eventsUseCase?.getAll() ?? []
+    events = eventUseCase?.getAll() ?? []
     eventTableView.reloadData()
   }
 }

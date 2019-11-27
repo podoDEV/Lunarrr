@@ -1,12 +1,12 @@
 //
-//  CalendarRemoteRepository.swift
+//  CalendarRemoteDataSource.swift
 //  Lunarrr
 //
 //  Created by hb1love on 2019/11/17.
 //  Copyright © 2019 podo. All rights reserved.
 //
 
-final class CalendarRemoteRepository: CalendarRemoteDataSource {
+final class CalendarRemoteDataSource: CalendarRemoteDataSourceType {
 
   private var calServices: [CalendarServiceType]
 
@@ -70,7 +70,7 @@ final class CalendarRemoteRepository: CalendarRemoteDataSource {
   }
 }
 
-private extension CalendarRemoteRepository {
+private extension CalendarRemoteDataSource {
   func findCalService(type: CalendarProviderType) -> CalendarServiceType {
     guard let serivce = calServices.first(where: { $0.type == type }) else {
       fatalError("Failed to find calendar provider - \(type.title)")

@@ -39,13 +39,13 @@ extension ViewType {
 
   private func makeEventListViewController() -> EventListViewController {
     let vc = EventListViewController.controllerFromStoryboard("EventList")
-    vc.eventsUseCase = type(of: self).eventsUseCase
+    vc.eventUseCase = type(of: self).eventUseCase
     return vc
   }
 
   private func makeEventEditViewController(mode: EventEditMode, completion: @escaping (() -> Void)) -> EventEditViewController {
     let vc = EventEditViewController.controllerFromStoryboard("EventEdit")
-    vc.eventsUseCase = type(of: self).eventsUseCase
+    vc.eventUseCase = type(of: self).eventUseCase
     vc.didEditFinish = completion
     vc.mode = mode
     return vc
@@ -61,30 +61,30 @@ extension ViewType {
 
 extension ViewType {
 
-  static let eventsUseCase: EventsUseCase = {
-    return EventsUseCase(
-      calendarDataSource: calendarDataSource,
-      settingsDataSource: settingsDataSource
+  static let eventUseCase: EventUseCase = {
+    return EventUseCase(
+      calendarRepository: calendarRepository,
+      settingRepository: settingRepository
     )
   }()
 
   static let syncUseCase: SyncUseCase = {
     return SyncUseCase(
-      calendarDataSource: calendarDataSource,
-      settingsDataSource: settingsDataSource
+      calendarRepository: calendarRepository,
+      settingRepository: settingRepository
     )
   }()
 
-  static var settingsDataSource: SettingsDataSource = {
-    return SettingsRepository()
+  static var settingRepository: SettingRepositoryType = {
+    return SettingRepository()
   }()
 
-  static var calendarDataSource: CalendarDataSource = {
+  static var calendarRepository: CalendarRepositoryType = {
     return CalendarRepository(
-      local: CalendarLocalRepository(
+      local: CalendarLocalDataSource(
         database: CalendarDatabase()
       ),
-      remote: CalendarRemoteRepository(
+      remote: CalendarRemoteDataSource(
         calServices: [appleCalendarService]
       )
     )
