@@ -20,6 +20,6 @@ final class ApplicationCoordinator {
   }
 
   func start() {
-    navigator.show(.eventList, transition: .root)
+    navigator.show(.launch, transition: .root)
   }
 }

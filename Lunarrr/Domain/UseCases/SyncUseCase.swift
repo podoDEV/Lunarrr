@@ -6,6 +6,8 @@
 //  Copyright © 2019 podo. All rights reserved.
 //
 
+import Foundation
+
 class SyncUseCase: UseCase {
 
   let calendarRepository: CalendarRepositoryType
@@ -35,7 +37,9 @@ class SyncUseCase: UseCase {
     calendarRepository.authorization(type: type) { result in
       switch result {
       case .success:
-        self.updateDataSource(type: type, sync: sync, completion: completion)
+        DispatchQueue.main.async {
+          self.updateDataSource(type: type, sync: sync, completion: completion)
+        }
       case .failure(let error):
         completion(.failure(error))
       }

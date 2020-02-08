@@ -28,6 +28,7 @@ def app
   pod 'Scope'
   pod 'SwiftLint'
   pod 'KeychainAccess'
+  pod 'lottie-ios'
 end
 
 target 'Lunarrr' do

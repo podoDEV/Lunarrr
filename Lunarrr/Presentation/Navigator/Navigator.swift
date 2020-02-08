@@ -19,12 +19,15 @@ enum TransitionType {
 }
 
 enum ViewType {
+  case launch
   case eventList
   case eventEdit(mode: EventEditMode, completion: (() -> Void))
   case setting
 
   func instantiateViewController() -> UIViewController & Navigatable {
     switch self {
+    case .launch:
+      return makeLaunchViewController()
     case .eventList:
       return makeEventListViewController()
     case .eventEdit(let mode, let completion):
@@ -36,6 +39,12 @@ enum ViewType {
 }
 
 extension ViewType {
+
+  private func makeLaunchViewController() -> LaunchViewController {
+    let vc = LaunchViewController()//.controllerFromStoryboard("EventList")
+//    vc.eventUseCase = type(of: self).eventUseCase
+    return vc
+  }
 
   private func makeEventListViewController() -> EventListViewController {
     let vc = EventListViewController.controllerFromStoryboard("EventList")

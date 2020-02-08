@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D05E2D823EE536A00FC058D /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05E2D723EE536A00FC058D /* LaunchViewController.swift */; };
+		2D05E2F223EED2BA00FC058D /* launch.json in Resources */ = {isa = PBXBuildFile; fileRef = 2D05E2F123EED2BA00FC058D /* launch.json */; };
 		2D0E588723517B25008F82BE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E588623517B25008F82BE /* Images.xcassets */; };
 		2D0E58AA23518739008F82BE /* BMEULJIRO.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2D0E58A923518739008F82BE /* BMEULJIRO.otf */; };
 		2D0E58B023518749008F82BE /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E58AD23518749008F82BE /* EventListViewController.swift */; };
@@ -67,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		2BD64EBEB8ABFBD258A662DF /* Pods-Lunarrr.debug(prod).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunarrr.debug(prod).xcconfig"; path = "Target Support Files/Pods-Lunarrr/Pods-Lunarrr.debug(prod).xcconfig"; sourceTree = "<group>"; };
+		2D05E2D723EE536A00FC058D /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		2D05E2F123EED2BA00FC058D /* launch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launch.json; sourceTree = "<group>"; };
 		2D0E587A23517B24008F82BE /* Lunarrr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunarrr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0E588623517B25008F82BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D0E58A923518739008F82BE /* BMEULJIRO.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMEULJIRO.otf; sourceTree = "<group>"; };
@@ -170,6 +174,14 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
+		2D05E2F023EED24800FC058D /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				2D05E2F123EED2BA00FC058D /* launch.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		2D0E587123517B24008F82BE = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +229,7 @@
 		2D0E58A1235184E8008F82BE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2D05E2F023EED24800FC058D /* Lottie */,
 				2D80869B2380155A00F505F8 /* Colors */,
 				2D0E58A52351867F008F82BE /* Fonts */,
 				2D0E58A423518674008F82BE /* Images */,
@@ -500,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				2DDF96EC235AB99A00209EE5 /* Launch.storyboard */,
+				2D05E2D723EE536A00FC058D /* LaunchViewController.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -613,6 +627,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D0E588723517B25008F82BE /* Images.xcassets in Resources */,
+				2D05E2F223EED2BA00FC058D /* launch.json in Resources */,
 				2DD4A020236D20A3002BF6B5 /* EventList.storyboard in Resources */,
 				2D87768C23765E10004FB433 /* SCDream6.otf in Resources */,
 				2D8086AA23804E2100F505F8 /* SCDream5.otf in Resources */,
@@ -715,6 +730,7 @@
 				2DF1BD592363F140004F54E8 /* AnalyticsEvent.swift in Sources */,
 				2D8086A1238028B300F505F8 /* UIButton+Additions.swift in Sources */,
 				2D84970C2381AB9E001C0EEC /* BaseViewController.swift in Sources */,
+				2D05E2D823EE536A00FC058D /* LaunchViewController.swift in Sources */,
 				2DD4A026236D311F002BF6B5 /* SettingViewController.swift in Sources */,
 				2DBE096E2388E60100B189D2 /* CalendarError.swift in Sources */,
 				2DBE09792388FBBC00B189D2 /* CalendarProvider+Extensions.swift in Sources */,
@@ -864,7 +880,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				INFOPLIST_FILE = "$(SRCROOT)/Lunarrr/App/Supporting Files/Info.plist";
@@ -872,13 +888,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.podo.lunarrr.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.podo.lunarrr;
+				PRODUCT_NAME = Lunarrr;
 				SWIFT_OBJC_BRIDGING_HEADER = "Lunarrr/App/Supporting Files/Lunarrr-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug(Prod)";
 		};
@@ -888,22 +904,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				INFOPLIST_FILE = "$(SRCROOT)/Lunarrr/App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.podo.lunarrr;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = podo_Lunarrr_appstore_191120;
+				PRODUCT_NAME = Lunarrr;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lunarrr/App/Supporting Files/Lunarrr-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Release(Prod)";
 		};
@@ -974,7 +990,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				INFOPLIST_FILE = "$(SRCROOT)/Lunarrr/App/Supporting Files/Info.plist";
@@ -982,13 +998,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.podo.lunarrr.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Lunarrr;
 				SWIFT_OBJC_BRIDGING_HEADER = "Lunarrr/App/Supporting Files/Lunarrr-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Debug(Dev)";
 		};
@@ -1052,22 +1068,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				INFOPLIST_FILE = "$(SRCROOT)/Lunarrr/App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.1;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.podo.lunarrr.test;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = podo_Lunarrr_appstore_191120;
+				PRODUCT_NAME = Lunarrr;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lunarrr/App/Supporting Files/Lunarrr-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = "Release(Dev)";
 		};

@@ -45,7 +45,7 @@ final class EventListViewController: BaseViewController {
       withDuration: 0.2,
       animations: {
         self.writeButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-      },
+    },
       completion: { _ in
         UIView.animate(withDuration: 0.1) {
           self.writeButton.transform = CGAffineTransform.identity

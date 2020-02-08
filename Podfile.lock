@@ -64,6 +64,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.3.1):
     - GoogleUtilities/Logger
   - KeychainAccess (3.2.0)
+  - lottie-ios (3.1.6)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Core
   - KeychainAccess
+  - lottie-ios
   - Moya
   - RealmSwift
   - Scope
@@ -120,6 +122,7 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - KeychainAccess
+    - lottie-ios
     - Moya
     - nanopb
     - Realm
@@ -145,6 +148,7 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 862418a8cdda520c4dd4af83a756d04efe4a6990
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Realm: 5d1453468eca02c901c50b8a356f4a98a15b57aa
@@ -155,6 +159,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: aaf2ebd7dac2e952991f46a82ed24ad642867ae2
   Umbrella: d5b508a0efea3c50f4764ad96035d08eafee26bc
 
-PODFILE CHECKSUM: d7165f95527bf9d250f31518ee4cecdf2c0a19b1
+PODFILE CHECKSUM: e33fe2731cda999546d4d7a1cc97b23e49238e2c
 
 COCOAPODS: 1.8.4

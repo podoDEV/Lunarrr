@@ -123,6 +123,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
     let event = Event(title: eventTitle, date: current)
     eventUseCase?.new(event)
     didEditFinish?()
+    analytics.log(.event_create(event))
     navigator?.pop(isModal: true)
     Vibration.success.vibrate()
   }
@@ -134,6 +135,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
     event.date = current
     eventUseCase?.update(event)
     didEditFinish?()
+    analytics.log(.event_edit)
     navigator?.pop(isModal: true)
     Vibration.success.vibrate()
   }
@@ -198,15 +200,16 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
     guard let id = event.id else { return }
     eventUseCase?.delete(id)
     didEditFinish?()
+    analytics.log(.event_delete)
     navigator?.pop(isModal: true)
   }
 
   func showDeleteAlert() {
-    let deleteAction = UIAlertAction(title: "지워버려", style: .destructive) { _ in
+    let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { _ in
       self.deleteEvent()
     }
-    let cancelAction = UIAlertAction(title: "걍 둬", style: .cancel)
-    let alert = UIAlertController(title: "일정 삭제", message: "진짜 지울꺼야?", preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+    let alert = UIAlertController(title: "일정 삭제", message: "진짜 지울꺼예요?ㅠ", preferredStyle: .alert)
     alert.addAction(deleteAction)
     alert.addAction(cancelAction)
     DispatchQueue.main.async {
