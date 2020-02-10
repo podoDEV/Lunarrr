@@ -21,7 +21,7 @@ final class EventCell : UITableViewCell {
       containerView.layer.borderColor = borderColor?.cgColor
       gregorianLabel.textColor = UIColor(named: "date_solar")
       titleLabel.text = event.title
-      lunarLabel.text = "음력".appending(event.date?.stringForLunar() ?? "")
+      lunarLabel.text = "음력 ".appending(event.date?.stringForLunar() ?? "")
       gregorianLabel.text = event.date?
         .toNearestFutureIncludingToday()?
         .stringForSolar()
