@@ -70,7 +70,7 @@ final class EventEditViewController: BaseViewController, UITextFieldDelegate {
     let datePicker = UIDatePicker()
     datePicker.datePickerMode = .date
     datePicker.timeZone = .current
-    datePicker.calendar = Calendar.chinese
+    datePicker.calendar = .chinese
     return datePicker
   }()
 

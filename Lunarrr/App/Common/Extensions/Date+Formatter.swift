@@ -35,8 +35,9 @@ extension Date {
 
 extension Date {
   func stringForLunar() -> String {
-    let formatter = DateFormatter.defaultDateFormatter(calendar: Calendar.chinese)
-    return formatter.string(from: self)
+    let year = "\(Calendar.gregorian.component(.year, from: self))년 "
+    let formatter = DateFormatter.defaultDateFormatter(calendar: .chinese)
+    return year + formatter.string(from: self)
   }
 
   func stringForSolar() -> String {
