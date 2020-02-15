@@ -63,7 +63,7 @@ extension DateFormatter {
 
   static func default2DateFormatter(calendar: Calendar) -> DateFormatter {
     return DateFormatter().also {
-      $0.dateFormat = "YY년 M월 d일"
+      $0.dateFormat = "YYYY년 M월 d일"
       $0.locale = .current
       $0.calendar = calendar
     }
