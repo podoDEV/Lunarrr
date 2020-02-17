@@ -14,6 +14,7 @@
 		2D0E58B023518749008F82BE /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E58AD23518749008F82BE /* EventListViewController.swift */; };
 		2D0E58B123518749008F82BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0E58AE23518749008F82BE /* AppDelegate.swift */; };
 		2D30E64F23842DD2002BB6C3 /* Calendar+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D30E64E23842DD2002BB6C3 /* Calendar+Additions.swift */; };
+		2D7C44C223FAD75C001252BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D7C44C423FAD75C001252BA /* InfoPlist.strings */; };
 		2D80869D2380157300F505F8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D80869C2380157300F505F8 /* Colors.xcassets */; };
 		2D80869F23801ABA00F505F8 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D80869E23801ABA00F505F8 /* UIView+Additions.swift */; };
 		2D8086A1238028B300F505F8 /* UIButton+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8086A0238028B300F505F8 /* UIButton+Additions.swift */; };
@@ -78,6 +79,8 @@
 		2D0E58AD23518749008F82BE /* EventListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 		2D0E58AE23518749008F82BE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D30E64E23842DD2002BB6C3 /* Calendar+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Additions.swift"; sourceTree = "<group>"; };
+		2D7C44C323FAD75C001252BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2D7C44C523FAD776001252BA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D80869C2380157300F505F8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2D80869E23801ABA00F505F8 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		2D8086A0238028B300F505F8 /* UIButton+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Additions.swift"; sourceTree = "<group>"; };
@@ -251,6 +254,7 @@
 		2D0E58A32351866B008F82BE /* Strings */ = {
 			isa = PBXGroup;
 			children = (
+				2D7C44C423FAD75C001252BA /* InfoPlist.strings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -610,6 +614,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 2D0E587123517B24008F82BE;
 			productRefGroup = 2D0E587B23517B24008F82BE /* Products */;
@@ -627,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D0E588723517B25008F82BE /* Images.xcassets in Resources */,
+				2D7C44C223FAD75C001252BA /* InfoPlist.strings in Resources */,
 				2D05E2F223EED2BA00FC058D /* launch.json in Resources */,
 				2DD4A020236D20A3002BF6B5 /* EventList.storyboard in Resources */,
 				2D87768C23765E10004FB433 /* SCDream6.otf in Resources */,
@@ -663,7 +669,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\"${PODS_ROOT}/Fabric/upload-symbols\" -gsp \"${PROJECT_DIR}/Lunarrr/App/Supporting Files/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
 		};
 		502A20F1C058F5A5DE11DBC8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -758,11 +764,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		2D7C44C423FAD75C001252BA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D7C44C323FAD75C001252BA /* en */,
+				2D7C44C523FAD776001252BA /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		2D0E588C23517B25008F82BE /* Debug(Prod) */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -823,6 +842,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -907,6 +927,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				INFOPLIST_FILE = "$(SRCROOT)/Lunarrr/App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -927,6 +948,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1012,6 +1034,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1071,6 +1094,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				INFOPLIST_FILE = "$(SRCROOT)/Lunarrr/App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
